@@ -1,0 +1,15 @@
+{
+  "name": "reaction-role",
+  "version": "0.0.1",
+  "description": "Discord Reaction Role Bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tunar",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "mongoose": "^5.12.0"
+  }
+}
