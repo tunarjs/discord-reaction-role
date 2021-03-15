@@ -22,7 +22,7 @@ client.on('message', async message => {
     let command = message.content.split(' ')[0].slice(prefix.length);
 
     if(command === 'reaction-role') {
-    if(args[0] !== 'add' && args[0] !== 'delete') return message.channel.send('');
+    if(args[0] !== 'add' && args[0] !== 'delete') return message.channel.send('You should write add delete.');
     if(args[0] === 'add') {
     let channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
     let id = args[2];
