@@ -57,10 +57,13 @@ client.on('message', async message => {
 client.on('messageReactionAdd', async (reaction, user) => {
 if(!reaction.message.guild) return;
 if(client.user.id === user.id) return;
-data.findOne({ guild: reaction.message.guild.id, message: reaction.message.id }, async function (err, docs) {
+let emoji = reaction.emoji.toString();
+data.findOne({ guild: reaction.message.guild.id, message: reaction.message.id, emoji: emoji }, async function (err, docs) {
+   if(docs {
 let member = reaction.message.guild.members.cache.get(user.id)
 if(reaction.message.guild.roles.cache.get(docs.role)) {
 if(!member.roles.cache.has(docs.role)) member.roles.add(docs.role)
+}
 }
 })
 })
@@ -68,11 +71,14 @@ if(!member.roles.cache.has(docs.role)) member.roles.add(docs.role)
 client.on('messageReactionRemove', async (reaction, user) => {
     if(!reaction.message.guild) return;
     if(client.user.id === user.id) return;
-    data.findOne({ guild: reaction.message.guild.id, message: reaction.message.id }, async function (err, docs) {
+    let emoji = reaction.emoji.toString();
+    data.findOne({ guild: reaction.message.guild.id, message: reaction.message.id, emoji: emoji }, async function (err, docs) {
+     if(docs) {
     let member = reaction.message.guild.members.cache.get(user.id)
     if(reaction.message.guild.roles.cache.get(docs.role)) {
     if(member.roles.cache.has(docs.role)) member.roles.remove(docs.role)
     }
+     }
     })
     })
 
